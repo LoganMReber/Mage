@@ -1,25 +1,45 @@
-import React from "react";
+import {useState} from "react";
+import StatScreen from "./components/StatScreen";
+import SpellsScreen from "./components/SpellsScreen";
+import ItemsScreen from "./components/ItemsScreen";
+import MapScreen from "./components/MapScreen";
+import JournalScreen from "./components/JournalScreen";
 
-const wizard = {
-  "name":"Caster",
-  "age":1,
-  "mana":1,
-  "skills":{
-    "casting":1,
-    "forming":2,
-    "meditation":3
+
+const App = () => {
+
+  const [windowMode,setWindowMode] = useState(1);
+
+  const selectWindow = id => {
+    setWindowMode(id);
   }
-  
-}
-
-function App() {
+  const displayMainWindow = index => {
+    switch(index){
+      case 1:
+        return (<StatScreen/>);
+      case 2:
+        return (<SpellsScreen/>);
+      case 3:
+        return (<ItemsScreen/>);
+      case 4:
+        return (<MapScreen/>);
+      case 5:
+        return (<JournalScreen/>);
+      default:
+        return (<div>Invalid Window Mode</div>);
+    }
+  }
   return (
     <div className="App">
-      <div className="WizStatBlock">
-        <h1>{wizard.name}, Age: {wizard.age}</h1>
-        {Object.keys(wizard.skills).map((element,i)=>{
-          return (<h3 key={i}>{element} : {wizard.skills[element]}</h3>);
-        })}
+      <div id="Main-Window">
+        <menu className="tabs">
+          <button className="tab" onClick={()=>selectWindow(1)}>Character</button>
+          <button className="tab" onClick={()=>selectWindow(2)}>Spells</button>
+          <button className="tab" onClick={()=>selectWindow(3)}>Items</button>
+          <button className="tab" onClick={()=>selectWindow(4)}>Map</button>
+          <button className="tab" onClick={()=>selectWindow(5)}>Journal</button>
+        </menu>
+        {displayMainWindow(windowMode)}
       </div>
     </div>
   );

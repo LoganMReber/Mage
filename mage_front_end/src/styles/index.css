@@ -10,6 +10,12 @@
 html {
   font-size: 62.5%;
 }
+.RuneSearch table {
+  width: 100%;
+}
+.RuneSearch table tbody {
+  width: 100%;
+}
 .App {
   display: flex;
   flex-flow: column nowrap;

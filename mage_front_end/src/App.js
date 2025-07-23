@@ -4,6 +4,7 @@ import SpellsScreen from "./components/SpellsScreen";
 import ItemsScreen from "./components/ItemsScreen";
 import MapScreen from "./components/MapScreen";
 import JournalScreen from "./components/JournalScreen";
+import RuneSearchGame from "./components/RuneSearchGame";
 
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
         return (<MapScreen/>);
       case 5:
         return (<JournalScreen/>);
+      case 6:
+        return (<RuneSearchGame/>);
       default:
         return (<div>Invalid Window Mode</div>);
     }
@@ -38,6 +41,7 @@ const App = () => {
           <button className="tab" onClick={()=>selectWindow(3)}>Items</button>
           <button className="tab" onClick={()=>selectWindow(4)}>Map</button>
           <button className="tab" onClick={()=>selectWindow(5)}>Journal</button>
+          <button className="tab" onClick={()=>selectWindow(6)}>Game</button>
         </menu>
         {displayMainWindow(windowMode)}
       </div>

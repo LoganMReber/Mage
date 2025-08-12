@@ -1,11 +1,15 @@
 * {
   box-sizing: border-box;
-  font-family: 'Courier', monospace;
-  background-color: #111;
-  color: #EEE;
+  font-family: "Lucida Sans Typewriter", monospace;
+  letter-spacing: 2px;
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  color: #fe9;
   margin: 0;
   padding: 0;
-  border: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -20,6 +24,56 @@ html {
   width: 100%;
   font-size: 4rem;
 }
+.Main-Window {
+  height: 95%;
+  width: 95%;
+  box-shadow: 0 0 1.6rem 0.6rem #112;
+  border: 0.1rem solid #112;
+  padding: 2rem;
+  background: linear-gradient(315deg, #111 0%, #112 100%);
+}
+.Main-Window .Character-View {
+  transition: 1s;
+}
+.Main-Window .tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: transparent;
+}
+.Main-Window .tabs .tab {
+  display: flex;
+  border: 2px solid #c9f;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  width: 25rem;
+  font-size: 3.2rem;
+  padding: 1rem;
+}
+.Main-Window .tabs .tab:hover {
+  background-color: #234;
+}
+.Main-Window .full-name {
+  padding: 4rem;
+  margin: 1rem;
+  border: 1px solid #c9f;
+}
+.Main-Window .bio-row,
+.Main-Window .rep-row {
+  display: flex;
+  width: 100%;
+}
+.Main-Window .bio-row div,
+.Main-Window .rep-row div {
+  width: 50%;
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid #c9f;
+}
 .App {
   display: flex;
   flex-flow: column nowrap;
@@ -29,24 +83,5 @@ html {
   width: 100vw;
   font-size: 3.2rem;
   text-align: center;
-}
-.App #Main-Window {
-  height: 80%;
-  width: 80%;
-}
-.App #Main-Window menu {
-  display: flex;
-  justify-content: space-between;
-}
-.App #Main-Window menu .tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  width: 25%;
-  font-size: 3.2rem;
-  padding: 0.5rem;
-}
-.App #Main-Window menu .tab:hover {
-  background-color: #444;
+  background-color: #000;
 }

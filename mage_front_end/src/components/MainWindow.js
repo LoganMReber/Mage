@@ -18,6 +18,8 @@ const MainWindow = () => {
         return <MWView.Map />;
       case "Journal":
         return <MWView.Journal />;
+      case "Game":
+        return <MWView.Game />;
       default:
         return <div>Invalid Window Mode</div>;
     }
@@ -39,6 +41,9 @@ const MainWindow = () => {
         </div>
         <div className="tab" onClick={() => selectWindow("Journal")}>
           Journal
+        </div>
+        <div className="tab" onClick={() => selectWindow("Game")}>
+          Game
         </div>
       </menu>
       {displayMainWindow(windowMode)}

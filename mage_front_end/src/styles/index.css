@@ -14,6 +14,16 @@
 html {
   font-size: 62.5%;
 }
+.RuneSearch table {
+  width: 100%;
+}
+.RuneSearch table tbody {
+  width: 100%;
+}
+.RuneSearch table tbody button {
+  width: 100%;
+  font-size: 4rem;
+}
 .Main-Window {
   height: 95%;
   width: 95%;

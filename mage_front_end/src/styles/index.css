@@ -16,6 +16,10 @@ html {
 .RuneSearch table tbody {
   width: 100%;
 }
+.RuneSearch table tbody button {
+  width: 100%;
+  font-size: 4rem;
+}
 .App {
   display: flex;
   flex-flow: column nowrap;

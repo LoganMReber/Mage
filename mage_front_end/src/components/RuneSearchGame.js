@@ -8,6 +8,67 @@ const RuneSearchGame = () => {
   const [startPos, setStartPos] = useState([0, 0]);
   const [endPos, setEndPos] = useState([0, 0]);
   const [grid, setGrid] = useState([]);
+  const [playerChoice1, setPlayerchoice1] = useState([0, 0]);
+  const [playerChoice2, setPlayerchoice2] = useState([0, 0]);
+  const [startSelected, setStartSelected] = useState(false);
+  const [training, settraining] = useState(true);
+  const [score, setScore] = useState(0);
+  const [numtries, setNumTries] = useState(1);
+
+  const areArraysEqual = (arr1 = [], arr2 = []) => {
+    let isEqual = true;
+    if (arr1.length == arr2.length) {
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] != arr2[i]) {
+          isEqual = false;
+          break;
+        }
+      }
+    }
+
+    return isEqual;
+  }
+
+  const AnswerSelected = input => {
+    console.log("clicked");
+    if (!startSelected) {
+      setPlayerchoice1(input);
+      setStartSelected(true);
+    }
+    else {
+      setPlayerchoice2(input);
+    }
+  }
+
+  // Check if user gets correct answer
+   useEffect(() => {
+    console.log("First", playerChoice1);
+    console.log("Second", playerChoice2);
+
+    if (playerChoice1.length > 0 && playerChoice2.length > 0) {
+      if (areArraysEqual(playerChoice1, startPos) && areArraysEqual(playerChoice2, endPos)) {
+        console.log("Win");
+        if (!training) {
+          setScore(1);
+        }
+        else {
+          setScore((gridSize * gridSize * (1 / answerSize)) / numtries);
+        }
+      }
+      else {
+        console.log("loss");
+        if (!training) {
+          setScore(0);
+        }
+        else {
+          setNumTries(numtries + 1);
+          setStartSelected(false);
+        }
+      }
+    }
+   }, [playerChoice2])
+
+  
 
   useEffect(() => {
     const getRandomLeter = () => {
@@ -109,8 +170,6 @@ const RuneSearchGame = () => {
     setAnswer(temp);
   }, []);
 
-  console.log("answer", answer)
-
   return (
     <div className="RuneSearch">
       <h1>Rune Search Screen</h1>
@@ -141,7 +200,7 @@ const RuneSearchGame = () => {
                     return (
                       <td key={j}>
                         {" "}
-                        <h3>{element}</h3>{" "}
+                        <button onClick={()=>AnswerSelected([j, i])}>{element}</button>{" "}
                       </td>
                     );
                   })}
